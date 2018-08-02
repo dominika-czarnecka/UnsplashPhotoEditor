@@ -1,3 +1,5 @@
 import Foundation
 
-class WallViewModel { }
+class WallViewModel {
+    var photos: [Photo]?
+}

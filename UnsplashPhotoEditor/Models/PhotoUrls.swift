@@ -1,9 +1,9 @@
 import Foundation
 
 class PhotoUrls: Codable {
-    let raw: String?
-    let full: String?
-    let regular: String?
-    let small: String?
-    let thumb: String?
+    var raw: String?
+    var full: String?
+    var regular: String?
+    var small: String?
+    var thumb: String?
 }

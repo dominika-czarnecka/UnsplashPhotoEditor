@@ -27,8 +27,6 @@ extension APIRequest {
         headers.forEach {
             request.addValue($0.value, forHTTPHeaderField: $0.key)
         }
-        //TODO: Remove before commit!!!
-        let accessKey = "be82fe8fbf6e772cdeee68373d4048f735db2332afe8b8700a04d6a75e2c572c"
         request.addValue(accessKey, forHTTPHeaderField: "Authorization")
         return request
     }
