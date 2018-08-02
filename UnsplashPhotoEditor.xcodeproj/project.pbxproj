@@ -18,6 +18,13 @@
 		158AE835211326D4007320CF /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE832211326D4007320CF /* WallViewController.swift */; };
 		158AE836211326D4007320CF /* WallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE833211326D4007320CF /* WallView.swift */; };
 		158AE8392113275C007320CF /* WallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE8382113275C007320CF /* WallViewModel.swift */; };
+		158AE83D21133090007320CF /* WallCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE83C21133090007320CF /* WallCollectionViewLayout.swift */; };
+		158AE84021133392007320CF /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE83F21133392007320CF /* ApiManager.swift */; };
+		158AE84221133441007320CF /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE84121133441007320CF /* APIRequest.swift */; };
+		158AE8452113347A007320CF /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE8442113347A007320CF /* RequestType.swift */; };
+		15F275EE2113379700BFEA3B /* GetPhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */; };
+		15F275F12113383A00BFEA3B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F02113383A00BFEA3B /* Photo.swift */; };
+		15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F221133A2700BFEA3B /* PhotoUrls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +62,13 @@
 		158AE832211326D4007320CF /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
 		158AE833211326D4007320CF /* WallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallView.swift; sourceTree = "<group>"; };
 		158AE8382113275C007320CF /* WallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModel.swift; sourceTree = "<group>"; };
+		158AE83C21133090007320CF /* WallCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallCollectionViewLayout.swift; sourceTree = "<group>"; };
+		158AE83F21133392007320CF /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		158AE84121133441007320CF /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		158AE8442113347A007320CF /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotosRequest.swift; sourceTree = "<group>"; };
+		15F275F02113383A00BFEA3B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		15F275F221133A2700BFEA3B /* PhotoUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUrls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +119,9 @@
 		158AE7F221131E14007320CF /* UnsplashPhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				15F275EF2113382B00BFEA3B /* Models */,
+				158AE8432113346B007320CF /* Enums */,
+				158AE83E2113309F007320CF /* Network */,
 				158AE82E211321BC007320CF /* Extensions */,
 				158AE82121131F61007320CF /* Resources */,
 				158AE822211320C9007320CF /* Screens */,
@@ -173,8 +190,44 @@
 				158AE832211326D4007320CF /* WallViewController.swift */,
 				158AE833211326D4007320CF /* WallView.swift */,
 				158AE8382113275C007320CF /* WallViewModel.swift */,
+				158AE83C21133090007320CF /* WallCollectionViewLayout.swift */,
 			);
 			path = Wall;
+			sourceTree = "<group>";
+		};
+		158AE83E2113309F007320CF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				15F275EC2113378300BFEA3B /* Requests */,
+				158AE84121133441007320CF /* APIRequest.swift */,
+				158AE83F21133392007320CF /* ApiManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		158AE8432113346B007320CF /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				158AE8442113347A007320CF /* RequestType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		15F275EC2113378300BFEA3B /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		15F275EF2113382B00BFEA3B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15F275F02113383A00BFEA3B /* Photo.swift */,
+				15F275F221133A2700BFEA3B /* PhotoUrls.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +240,7 @@
 				158AE7EC21131E14007320CF /* Sources */,
 				158AE7ED21131E14007320CF /* Frameworks */,
 				158AE7EE21131E14007320CF /* Resources */,
+				158AE84621133590007320CF /* TODO as warning */,
 			);
 			buildRules = (
 			);
@@ -302,17 +356,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		158AE84621133590007320CF /* TODO as warning */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "TODO as warning";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]\nthen\nTAGS=\"TODO:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		158AE7EC21131E14007320CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				158AE836211326D4007320CF /* WallView.swift in Sources */,
+				158AE84021133392007320CF /* ApiManager.swift in Sources */,
 				158AE7F421131E14007320CF /* AppDelegate.swift in Sources */,
+				15F275EE2113379700BFEA3B /* GetPhotosRequest.swift in Sources */,
 				158AE835211326D4007320CF /* WallViewController.swift in Sources */,
 				158AE82C21132154007320CF /* BaseView.swift in Sources */,
+				15F275F12113383A00BFEA3B /* Photo.swift in Sources */,
 				158AE82D21132154007320CF /* BaseViewController.swift in Sources */,
 				158AE8392113275C007320CF /* WallViewModel.swift in Sources */,
+				158AE83D21133090007320CF /* WallCollectionViewLayout.swift in Sources */,
+				158AE8452113347A007320CF /* RequestType.swift in Sources */,
+				158AE84221133441007320CF /* APIRequest.swift in Sources */,
+				15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */,
 				158AE830211321DC007320CF /* UIColor+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
