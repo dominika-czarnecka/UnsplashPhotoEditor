@@ -27,6 +27,7 @@ extension APIRequest {
         headers.forEach {
             request.addValue($0.value, forHTTPHeaderField: $0.key)
         }
+       
         request.addValue(accessKey, forHTTPHeaderField: "Authorization")
         return request
     }

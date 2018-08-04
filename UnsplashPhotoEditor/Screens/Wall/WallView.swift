@@ -2,7 +2,7 @@ import UIKit
 
 final class WallView: BaseView {
     lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        let collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: WallCollectionViewLayout())
         collectionView.backgroundColor = .clear
         return collectionView
     }()

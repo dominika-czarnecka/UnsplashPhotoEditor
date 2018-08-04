@@ -1,5 +1,5 @@
 import Foundation
 
 class WallViewModel {
-    var photos: [Photo]?
+    var photos: [Photo] = []
 }
