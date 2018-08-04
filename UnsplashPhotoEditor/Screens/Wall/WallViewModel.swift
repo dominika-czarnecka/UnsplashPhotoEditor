@@ -1,5 +1,34 @@
-import Foundation
+import UIKit
+
+protocol WallViewDelegate: AnyObject {
+    func reloadCell(indexPath: IndexPath)
+    func getPhotoFromServer(urlString: String, for indexPathItem: Int)
+}
 
 class WallViewModel {
-    var photos: [Photo] = []
+    weak var delegate: WallViewDelegate?
+    var photosList: [Photo] = [] {
+        didSet {
+            photosImages.append(contentsOf: Array(repeating: nil, count: photosList.count - oldValue.count))
+            photosList.enumerated().forEach { (index, photo) in
+                if index >= oldValue.count || oldValue[index].id != photo.id, let url = photo.urls.thumb {
+                    delegate?.getPhotoFromServer(urlString: url, for: index)
+                }
+            }
+        }
+    }
+    var photosImages: [UIImage?] = []
+    
+    func set(_ image: UIImage?, for indexPathItem: Int) {
+        photosImages[indexPathItem] = image
+        delegate?.reloadCell(indexPath: IndexPath(item: indexPathItem, section: 0))
+    }
+    
+    func image(for indexPathItem: Int) -> UIImage? {
+        if indexPathItem < photosImages.count - 1 {
+            return photosImages[indexPathItem]
+        } else {
+            return nil
+        }
+    }
 }

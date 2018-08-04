@@ -24,7 +24,6 @@
 		15F275EE2113379700BFEA3B /* GetPhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */; };
 		15F275F12113383A00BFEA3B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F02113383A00BFEA3B /* Photo.swift */; };
 		15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F221133A2700BFEA3B /* PhotoUrls.swift */; };
-		15F275F52115C4A100BFEA3B /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F42115C4A100BFEA3B /* UIImage+Extensions.swift */; };
 		15F275F72115C91D00BFEA3B /* WallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F62115C91D00BFEA3B /* WallCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +68,6 @@
 		15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotosRequest.swift; sourceTree = "<group>"; };
 		15F275F02113383A00BFEA3B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		15F275F221133A2700BFEA3B /* PhotoUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUrls.swift; sourceTree = "<group>"; };
-		15F275F42115C4A100BFEA3B /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		15F275F62115C91D00BFEA3B /* WallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				158AE82F211321DC007320CF /* UIColor+Extensions.swift */,
-				15F275F42115C4A100BFEA3B /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -392,7 +389,6 @@
 				158AE83D21133090007320CF /* WallCollectionViewLayout.swift in Sources */,
 				158AE8452113347A007320CF /* RequestType.swift in Sources */,
 				158AE84221133441007320CF /* APIRequest.swift in Sources */,
-				15F275F52115C4A100BFEA3B /* UIImage+Extensions.swift in Sources */,
 				15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */,
 				15F275F72115C91D00BFEA3B /* WallCollectionViewCell.swift in Sources */,
 				158AE830211321DC007320CF /* UIColor+Extensions.swift in Sources */,

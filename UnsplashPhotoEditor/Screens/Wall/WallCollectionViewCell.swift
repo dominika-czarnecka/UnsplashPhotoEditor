@@ -7,6 +7,12 @@ class WallCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
+    let activitiIndicatorView: UIActivityIndicatorView = {
+       let activitiIndicator = UIActivityIndicatorView()
+        activitiIndicator.color = .background
+        return activitiIndicator
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureConstraints()
@@ -27,5 +33,11 @@ class WallCollectionViewCell: UICollectionViewCell {
             imageView.leftAnchor.constraint(equalTo: leftAnchor),
             imageView.rightAnchor.constraint(equalTo: rightAnchor)
         ])
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        activitiIndicatorView.stopAnimating()
     }
 }

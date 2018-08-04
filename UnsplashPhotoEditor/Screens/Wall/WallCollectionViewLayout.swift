@@ -5,7 +5,7 @@ protocol WallLayoutDelegate: AnyObject {
 }
 
 class WallCollectionViewLayout: UICollectionViewLayout {
-    weak var delegate: WallLayoutDelegate!
+    weak var delegate: WallLayoutDelegate?
     
     fileprivate var numberOfColumns = 2
     fileprivate var cellPadding: CGFloat = 6
@@ -25,7 +25,7 @@ class WallCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
-        guard cache.isEmpty == true, let collectionView = collectionView else { return }
+        guard cache.isEmpty == true, let collectionView = collectionView, let delegate = delegate else { return }
 
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset = [CGFloat]()
