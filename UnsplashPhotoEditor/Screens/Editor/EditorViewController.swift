@@ -16,12 +16,20 @@ final class EditorViewController: UIViewController {
         viewModel = model
         super.init(nibName: nil, bundle: nil)
         getPhotoFromServer()
+        
         customView.scrollView.delegate = self
+        
         customView.cancelButton.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
+        customView.shareButton.addTarget(self, action: #selector(shareButtonAction), for: .touchUpInside)
+        customView.gradientButton.addTarget(self, action: #selector(gradientButtonAction), for: .touchUpInside)
         
         let tapGestureRecognized = UITapGestureRecognizer(target: self, action: #selector(zoomToDefaultScale))
         tapGestureRecognized.numberOfTapsRequired = 2
         customView.scrollView.addGestureRecognizer(tapGestureRecognized)
+        
+        let colorPaletteTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(colorPaletteTapAction))
+        tapGestureRecognized.numberOfTapsRequired = 1
+        customView.colorsPaletteImageView.addGestureRecognizer(colorPaletteTapGestureRecognizer)
     }
     
     @available(*, unavailable, message: "Use init(_ model: EditorViewModelProtocol, rawImageUrl: URL)")
@@ -60,6 +68,23 @@ final class EditorViewController: UIViewController {
     
     @objc func cancelButtonAction() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    //TODO: Handle this
+    @objc func shareButtonAction() { }
+    
+    @objc func gradientButtonAction() {
+        customView.colorsPaletteImageView.isHidden = !customView.colorsPaletteImageView.isHidden
+    }
+    
+    @objc func colorPaletteTapAction(_ sender: UITapGestureRecognizer) {
+        let selectedPoint = sender.location(in: customView.colorsPaletteImageView)
+        let color = customView.colorsPaletteImageView.layer.colorOfPoint(point: selectedPoint)
+        let scale = customView.scrollView.zoomScale
+
+        viewModel.gradient.frame = CGRect(origin: customView.scrollView.frame.origin, size: CGSize(width: customView.imageView.frame.width / scale, height: customView.imageView.frame.height / scale))
+        viewModel.gradient.colors = [UIColor.clear.cgColor, color]
+        customView.imageView.layer.addSublayer(viewModel.gradient)
     }
 }
 

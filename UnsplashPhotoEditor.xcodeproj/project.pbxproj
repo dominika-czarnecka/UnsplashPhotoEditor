@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		151869C521178FF300A6EEEA /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151869C421178FF300A6EEEA /* CALayer+Extensions.swift */; };
 		158AE7F421131E14007320CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE7F321131E14007320CF /* AppDelegate.swift */; };
 		158AE7FB21131E15007320CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FA21131E15007320CF /* Assets.xcassets */; };
 		158AE7FE21131E15007320CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FC21131E15007320CF /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		151869C421178FF300A6EEEA /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
 		158AE7F021131E14007320CF /* UnsplashPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158AE7F321131E14007320CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158AE7FA21131E15007320CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				158AE82F211321DC007320CF /* UIColor+Extensions.swift */,
 				15F2764121174B3C00BFEA3B /* CGFloat+Extensions.swift */,
+				151869C421178FF300A6EEEA /* CALayer+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				158AE836211326D4007320CF /* WallView.swift in Sources */,
+				151869C521178FF300A6EEEA /* CALayer+Extensions.swift in Sources */,
 				15F2762721173D6900BFEA3B /* EditorViewModelProtocol.swift in Sources */,
 				158AE84021133392007320CF /* ApiManager.swift in Sources */,
 				158AE7F421131E14007320CF /* AppDelegate.swift in Sources */,
