@@ -28,6 +28,8 @@ extension APIRequest {
             request.addValue($0.value, forHTTPHeaderField: $0.key)
         }
        
+        //TODO: Should be in CocoaPodsKeys
+        let accessKey = "Client-ID be82fe8fbf6e772cdeee68373d4048f735db2332afe8b8700a04d6a75e2c572c"
         request.addValue(accessKey, forHTTPHeaderField: "Authorization")
         return request
     }

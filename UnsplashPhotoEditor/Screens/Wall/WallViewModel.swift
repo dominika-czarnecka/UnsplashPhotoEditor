@@ -5,15 +5,15 @@ protocol WallViewDelegate: AnyObject {
     func getPhotoFromServer(urlString: String, for indexPathItem: Int)
 }
 
-class WallViewModel {
+class WallViewModel: WallViewModelProtocol {
     weak var delegate: WallViewDelegate?
     
     var photosList: [Photo] = [] {
         didSet {
             photosImages.append(contentsOf: Array(repeating: nil, count: photosList.count - oldValue.count))
             photosList.enumerated().forEach { (index, photo) in
-                if index >= oldValue.count || oldValue[index].id != photo.id, let url = photo.urls.thumb {
-                    delegate?.getPhotoFromServer(urlString: url, for: index)
+                if index >= oldValue.count || oldValue[index].id != photo.id {
+                    delegate?.getPhotoFromServer(urlString: photo.urls.thumb, for: index)
                 }
             }
         }

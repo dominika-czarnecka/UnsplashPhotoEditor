@@ -10,7 +10,6 @@
 		158AE7F421131E14007320CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE7F321131E14007320CF /* AppDelegate.swift */; };
 		158AE7FB21131E15007320CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FA21131E15007320CF /* Assets.xcassets */; };
 		158AE7FE21131E15007320CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FC21131E15007320CF /* LaunchScreen.storyboard */; };
-		158AE80921131E15007320CF /* UnsplashPhotoEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE80821131E15007320CF /* UnsplashPhotoEditorTests.swift */; };
 		158AE82C21132154007320CF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE82A21132153007320CF /* BaseView.swift */; };
 		158AE830211321DC007320CF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE82F211321DC007320CF /* UIColor+Extensions.swift */; };
 		158AE835211326D4007320CF /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE832211326D4007320CF /* WallViewController.swift */; };
@@ -24,17 +23,15 @@
 		15F275F12113383A00BFEA3B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F02113383A00BFEA3B /* Photo.swift */; };
 		15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F221133A2700BFEA3B /* PhotoUrls.swift */; };
 		15F275F72115C91D00BFEA3B /* WallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F62115C91D00BFEA3B /* WallCollectionViewCell.swift */; };
+		15F276012117161B00BFEA3B /* WallViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F276002117161B00BFEA3B /* WallViewModelTests.swift */; };
+		15F276042117206D00BFEA3B /* WallViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F276032117206D00BFEA3B /* WallViewControllerTests.swift */; };
+		15F27607211723AA00BFEA3B /* WallViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F27606211723AA00BFEA3B /* WallViewModelMock.swift */; };
+		15F2760A211726A500BFEA3B /* WallViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F27609211726A500BFEA3B /* WallViewModelProtocol.swift */; };
+		15F2760C21172D4800BFEA3B /* PhotosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F2760B21172D4800BFEA3B /* PhotosTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		158AE80521131E15007320CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 158AE7E821131E14007320CF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 158AE7EF21131E14007320CF;
-			remoteInfo = UnsplashPhotoEditor;
-		};
-		158AE81021131E15007320CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 158AE7E821131E14007320CF /* Project object */;
 			proxyType = 1;
@@ -50,9 +47,7 @@
 		158AE7FD21131E15007320CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		158AE7FF21131E15007320CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		158AE80421131E15007320CF /* UnsplashPhotoEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplashPhotoEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		158AE80821131E15007320CF /* UnsplashPhotoEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoEditorTests.swift; sourceTree = "<group>"; };
 		158AE80A21131E15007320CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		158AE80F21131E15007320CF /* UnsplashPhotoEditorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplashPhotoEditorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		158AE82A21132153007320CF /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		158AE82F211321DC007320CF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		158AE832211326D4007320CF /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +61,11 @@
 		15F275F02113383A00BFEA3B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		15F275F221133A2700BFEA3B /* PhotoUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUrls.swift; sourceTree = "<group>"; };
 		15F275F62115C91D00BFEA3B /* WallCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallCollectionViewCell.swift; sourceTree = "<group>"; };
+		15F276002117161B00BFEA3B /* WallViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallViewModelTests.swift; sourceTree = "<group>"; };
+		15F276032117206D00BFEA3B /* WallViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewControllerTests.swift; sourceTree = "<group>"; };
+		15F27606211723AA00BFEA3B /* WallViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModelMock.swift; sourceTree = "<group>"; };
+		15F27609211726A500BFEA3B /* WallViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewModelProtocol.swift; sourceTree = "<group>"; };
+		15F2760B21172D4800BFEA3B /* PhotosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,13 +77,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		158AE80121131E15007320CF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		158AE80C21131E15007320CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -107,7 +100,6 @@
 			children = (
 				158AE7F021131E14007320CF /* UnsplashPhotoEditor.app */,
 				158AE80421131E15007320CF /* UnsplashPhotoEditorTests.xctest */,
-				158AE80F21131E15007320CF /* UnsplashPhotoEditorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +107,7 @@
 		158AE7F221131E14007320CF /* UnsplashPhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				15F276082117262700BFEA3B /* Protocols */,
 				15F275EF2113382B00BFEA3B /* Models */,
 				158AE8432113346B007320CF /* Enums */,
 				158AE83E2113309F007320CF /* Network */,
@@ -128,8 +121,11 @@
 		158AE80721131E15007320CF /* UnsplashPhotoEditorTests */ = {
 			isa = PBXGroup;
 			children = (
-				158AE80821131E15007320CF /* UnsplashPhotoEditorTests.swift */,
+				15F276052117237F00BFEA3B /* Mocks */,
+				15F2760B21172D4800BFEA3B /* PhotosTests.swift */,
+				15F276002117161B00BFEA3B /* WallViewModelTests.swift */,
 				158AE80A21131E15007320CF /* Info.plist */,
+				15F276032117206D00BFEA3B /* WallViewControllerTests.swift */,
 			);
 			path = UnsplashPhotoEditorTests;
 			sourceTree = "<group>";
@@ -217,6 +213,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		15F276052117237F00BFEA3B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				15F27606211723AA00BFEA3B /* WallViewModelMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		15F276082117262700BFEA3B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				15F27609211726A500BFEA3B /* WallViewModelProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,24 +268,6 @@
 			productReference = 158AE80421131E15007320CF /* UnsplashPhotoEditorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		158AE80E21131E15007320CF /* UnsplashPhotoEditorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 158AE81E21131E15007320CF /* Build configuration list for PBXNativeTarget "UnsplashPhotoEditorUITests" */;
-			buildPhases = (
-				158AE80B21131E15007320CF /* Sources */,
-				158AE80C21131E15007320CF /* Frameworks */,
-				158AE80D21131E15007320CF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				158AE81121131E15007320CF /* PBXTargetDependency */,
-			);
-			name = UnsplashPhotoEditorUITests;
-			productName = UnsplashPhotoEditorUITests;
-			productReference = 158AE80F21131E15007320CF /* UnsplashPhotoEditorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -289,10 +283,7 @@
 					};
 					158AE80321131E15007320CF = {
 						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = 158AE7EF21131E14007320CF;
-					};
-					158AE80E21131E15007320CF = {
-						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 						TestTargetID = 158AE7EF21131E14007320CF;
 					};
 				};
@@ -312,7 +303,6 @@
 			targets = (
 				158AE7EF21131E14007320CF /* UnsplashPhotoEditor */,
 				158AE80321131E15007320CF /* UnsplashPhotoEditorTests */,
-				158AE80E21131E15007320CF /* UnsplashPhotoEditorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -328,13 +318,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		158AE80221131E15007320CF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		158AE80D21131E15007320CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,6 +357,7 @@
 				15F275F12113383A00BFEA3B /* Photo.swift in Sources */,
 				158AE8392113275C007320CF /* WallViewModel.swift in Sources */,
 				158AE83D21133090007320CF /* WallCollectionViewLayout.swift in Sources */,
+				15F2760A211726A500BFEA3B /* WallViewModelProtocol.swift in Sources */,
 				158AE8452113347A007320CF /* RequestType.swift in Sources */,
 				158AE84221133441007320CF /* APIRequest.swift in Sources */,
 				15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */,
@@ -386,14 +370,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158AE80921131E15007320CF /* UnsplashPhotoEditorTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		158AE80B21131E15007320CF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				15F2760C21172D4800BFEA3B /* PhotosTests.swift in Sources */,
+				15F27607211723AA00BFEA3B /* WallViewModelMock.swift in Sources */,
+				15F276042117206D00BFEA3B /* WallViewControllerTests.swift in Sources */,
+				15F276012117161B00BFEA3B /* WallViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,11 +384,6 @@
 			isa = PBXTargetDependency;
 			target = 158AE7EF21131E14007320CF /* UnsplashPhotoEditor */;
 			targetProxy = 158AE80521131E15007320CF /* PBXContainerItemProxy */;
-		};
-		158AE81121131E15007320CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 158AE7EF21131E14007320CF /* UnsplashPhotoEditor */;
-			targetProxy = 158AE81021131E15007320CF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -579,6 +554,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FP33MYDL3;
 				INFOPLIST_FILE = UnsplashPhotoEditorTests/Info.plist;
@@ -589,6 +565,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dominika.czarnecka.com.UnsplashPhotoEditorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnsplashPhotoEditor.app/UnsplashPhotoEditor";
@@ -600,6 +578,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2FP33MYDL3;
 				INFOPLIST_FILE = UnsplashPhotoEditorTests/Info.plist;
@@ -610,49 +589,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dominika.czarnecka.com.UnsplashPhotoEditorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnsplashPhotoEditor.app/UnsplashPhotoEditor";
-			};
-			name = Release;
-		};
-		158AE81F21131E15007320CF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2FP33MYDL3;
-				INFOPLIST_FILE = UnsplashPhotoEditorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dominika.czarnecka.com.UnsplashPhotoEditorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = UnsplashPhotoEditor;
-			};
-			name = Debug;
-		};
-		158AE82021131E15007320CF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2FP33MYDL3;
-				INFOPLIST_FILE = UnsplashPhotoEditorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = dominika.czarnecka.com.UnsplashPhotoEditorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = UnsplashPhotoEditor;
 			};
 			name = Release;
 		};
@@ -682,15 +622,6 @@
 			buildConfigurations = (
 				158AE81C21131E15007320CF /* Debug */,
 				158AE81D21131E15007320CF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		158AE81E21131E15007320CF /* Build configuration list for PBXNativeTarget "UnsplashPhotoEditorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				158AE81F21131E15007320CF /* Debug */,
-				158AE82021131E15007320CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

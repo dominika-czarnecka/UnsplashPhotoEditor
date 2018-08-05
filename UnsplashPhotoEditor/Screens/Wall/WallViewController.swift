@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 final class WallViewController: UIViewController {
-    private let viewModel = WallViewModel()
+    private var viewModel: WallViewModelProtocol
 
     var customView: WallView {
         get { return view as! WallView }
@@ -10,6 +10,16 @@ final class WallViewController: UIViewController {
     
     override func loadView() {
         view = WallView()
+    }
+    
+    init(_ model: WallViewModelProtocol) {
+        viewModel = model
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable, message: "Use init(_ model: WallViewModelProtocol) insted")
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -29,7 +39,6 @@ final class WallViewController: UIViewController {
                 print(error!)
                 return
             }
-            print(photos?.count)
             self?.viewModel.photosList = photos ?? []
             DispatchQueue.main.async {
                 self?.customView.collectionView.reloadData()
