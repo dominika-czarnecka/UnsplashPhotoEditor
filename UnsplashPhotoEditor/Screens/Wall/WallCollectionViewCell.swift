@@ -24,14 +24,21 @@ class WallCollectionViewCell: UICollectionViewCell {
     }
     
     func configureConstraints() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
+        [imageView, activitiIndicatorView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
         
         addConstraints([
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.leftAnchor.constraint(equalTo: leftAnchor),
             imageView.rightAnchor.constraint(equalTo: rightAnchor)
+        ])
+        
+        addConstraints([
+            activitiIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activitiIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     

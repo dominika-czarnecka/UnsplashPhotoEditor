@@ -11,7 +11,6 @@
 		158AE7FB21131E15007320CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FA21131E15007320CF /* Assets.xcassets */; };
 		158AE7FE21131E15007320CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FC21131E15007320CF /* LaunchScreen.storyboard */; };
 		158AE80921131E15007320CF /* UnsplashPhotoEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE80821131E15007320CF /* UnsplashPhotoEditorTests.swift */; };
-		158AE81421131E15007320CF /* UnsplashPhotoEditorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE81321131E15007320CF /* UnsplashPhotoEditorUITests.swift */; };
 		158AE82C21132154007320CF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE82A21132153007320CF /* BaseView.swift */; };
 		158AE830211321DC007320CF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE82F211321DC007320CF /* UIColor+Extensions.swift */; };
 		158AE835211326D4007320CF /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE832211326D4007320CF /* WallViewController.swift */; };
@@ -54,8 +53,6 @@
 		158AE80821131E15007320CF /* UnsplashPhotoEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoEditorTests.swift; sourceTree = "<group>"; };
 		158AE80A21131E15007320CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		158AE80F21131E15007320CF /* UnsplashPhotoEditorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplashPhotoEditorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		158AE81321131E15007320CF /* UnsplashPhotoEditorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPhotoEditorUITests.swift; sourceTree = "<group>"; };
-		158AE81521131E15007320CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		158AE82A21132153007320CF /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		158AE82F211321DC007320CF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		158AE832211326D4007320CF /* WallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +98,6 @@
 			children = (
 				158AE7F221131E14007320CF /* UnsplashPhotoEditor */,
 				158AE80721131E15007320CF /* UnsplashPhotoEditorTests */,
-				158AE81221131E15007320CF /* UnsplashPhotoEditorUITests */,
 				158AE7F121131E14007320CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,15 +132,6 @@
 				158AE80A21131E15007320CF /* Info.plist */,
 			);
 			path = UnsplashPhotoEditorTests;
-			sourceTree = "<group>";
-		};
-		158AE81221131E15007320CF /* UnsplashPhotoEditorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				158AE81321131E15007320CF /* UnsplashPhotoEditorUITests.swift */,
-				158AE81521131E15007320CF /* Info.plist */,
-			);
-			path = UnsplashPhotoEditorUITests;
 			sourceTree = "<group>";
 		};
 		158AE82121131F61007320CF /* Resources */ = {
@@ -407,7 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158AE81421131E15007320CF /* UnsplashPhotoEditorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

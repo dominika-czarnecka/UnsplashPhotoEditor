@@ -7,6 +7,7 @@ protocol WallViewDelegate: AnyObject {
 
 class WallViewModel {
     weak var delegate: WallViewDelegate?
+    
     var photosList: [Photo] = [] {
         didSet {
             photosImages.append(contentsOf: Array(repeating: nil, count: photosList.count - oldValue.count))
@@ -17,6 +18,7 @@ class WallViewModel {
             }
         }
     }
+    
     var photosImages: [UIImage?] = []
     
     func set(_ image: UIImage?, for indexPathItem: Int) {
@@ -25,7 +27,7 @@ class WallViewModel {
     }
     
     func image(for indexPathItem: Int) -> UIImage? {
-        if indexPathItem < photosImages.count - 1 {
+        if indexPathItem < photosImages.count {
             return photosImages[indexPathItem]
         } else {
             return nil

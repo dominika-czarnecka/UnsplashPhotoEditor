@@ -29,6 +29,7 @@ final class WallViewController: UIViewController {
                 print(error!)
                 return
             }
+            print(photos?.count)
             self?.viewModel.photosList = photos ?? []
             DispatchQueue.main.async {
                 self?.customView.collectionView.reloadData()
@@ -89,7 +90,7 @@ extension WallViewController: WallViewDelegate {
         guard let cell = customView.collectionView.cellForItem(at: indexPath) as? WallCollectionViewCell,
         customView.collectionView.visibleCells.contains(cell),
         let image = viewModel.image(for: indexPath.item) else { return }
-        
+    
         cell.activitiIndicatorView.stopAnimating()
         cell.imageView.image = image
     }
