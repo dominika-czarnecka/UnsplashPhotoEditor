@@ -26,4 +26,7 @@ class WallViewModelMock: WallViewModelProtocol {
             return nil
         }
     }
+    func rawImageUrl(for indexPath: IndexPath) -> String {
+        return ""
+    }
 }

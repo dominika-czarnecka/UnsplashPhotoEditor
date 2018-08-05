@@ -26,10 +26,13 @@ final class WallViewController: UIViewController {
         customView.collectionView.register(WallCollectionViewCell.self, forCellWithReuseIdentifier: "WallCell")
         
         customView.collectionView.dataSource = self
+        customView.collectionView.delegate = self
+        
         if let layout = customView.collectionView.collectionViewLayout as? WallCollectionViewLayout {
             layout.delegate = self
         }
         viewModel.delegate = self
+        
         getPhotosListFromServer()
     }
     
@@ -67,6 +70,14 @@ extension WallViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
         return CGSize(width: itemSize, height: itemSize)
+    }
+}
+
+extension WallViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        guard let rawImageUrl = URL(string: viewModel.rawImageUrl(for: indexPath)) else { return }
+        present(EditorViewController(EditorViewModel(), rawImageUrl: rawImageUrl), animated: true, completion: nil)
     }
 }
 
