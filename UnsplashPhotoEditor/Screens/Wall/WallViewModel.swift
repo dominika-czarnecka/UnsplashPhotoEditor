@@ -33,8 +33,4 @@ class WallViewModel: WallViewModelProtocol {
             return nil
         }
     }
-    
-    func rawImageUrl(for indexPath: IndexPath) -> String {
-        return photosList[indexPath.item].urls.raw
-    }
 }

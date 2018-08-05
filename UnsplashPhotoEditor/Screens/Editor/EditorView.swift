@@ -1,10 +1,18 @@
 import UIKit
 
 final class EditorView: BaseView {
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isUserInteractionEnabled = true
+        scrollView.minimumZoomScale = 1
+        scrollView.maximumZoomScale = 100
+        scrollView.isScrollEnabled = true
+        return scrollView
+    }()
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.backgroundColor = .red
         return imageView
     }()
     
@@ -28,8 +36,15 @@ final class EditorView: BaseView {
         return button
     }()
     
+    var imageViewTopConstraint: NSLayoutConstraint?
+    var imageViewLeftConstraint: NSLayoutConstraint?
+    
     override func configureConstraints() {
-        [imageView, shareButton, cancelButton, stackView].forEach {
+        
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(imageView)
+        
+        [scrollView, shareButton, cancelButton, stackView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
@@ -51,11 +66,21 @@ final class EditorView: BaseView {
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackView.heightAnchor.constraint(equalToConstant: .buttonHeight)
         ])
+        
+        imageViewTopConstraint = imageView.topAnchor.constraint(equalTo: scrollView.topAnchor)
+        imageViewLeftConstraint = imageView.leftAnchor.constraint(equalTo: scrollView.leftAnchor)
+        
         addConstraints([
-            imageView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .margin),
-            imageView.leftAnchor.constraint(equalTo: cancelButton.leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: shareButton.rightAnchor),
-            imageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.margin)
+            scrollView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: .margin),
+            scrollView.leftAnchor.constraint(equalTo: cancelButton.leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: shareButton.rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -.margin)
+        ])
+        addConstraints([
+            imageViewTopConstraint!,
+            imageViewLeftConstraint!,
+            imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            imageView.rightAnchor.constraint(equalTo: scrollView.rightAnchor)
         ])
     }
 }

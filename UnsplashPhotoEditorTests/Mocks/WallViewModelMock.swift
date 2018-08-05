@@ -2,7 +2,7 @@ import UIKit
 
 @testable import UnsplashPhotoEditor
 
-class WallViewModelMock: WallViewModelProtocol {
+class WallViewModelMock: WallViewModelProtocol {    
     weak var delegate: WallViewDelegate?
 
     var photosList: [Photo] = {
@@ -25,8 +25,5 @@ class WallViewModelMock: WallViewModelProtocol {
         } else {
             return nil
         }
-    }
-    func rawImageUrl(for indexPath: IndexPath) -> String {
-        return ""
     }
 }

@@ -76,8 +76,8 @@ extension WallViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension WallViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        guard let rawImageUrl = URL(string: viewModel.rawImageUrl(for: indexPath)) else { return }
-        present(EditorViewController(EditorViewModel(), rawImageUrl: rawImageUrl), animated: true, completion: nil)
+        let photo = viewModel.photosList[indexPath.item]
+        present(EditorViewController(model: EditorViewModel(photo: photo)), animated: true, completion: nil)
     }
 }
 

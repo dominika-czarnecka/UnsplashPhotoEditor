@@ -8,5 +8,4 @@ protocol WallViewModelProtocol {
     
     func set(_ image: UIImage?, for indexPathItem: Int)
     func image(for indexPathItem: Int) -> UIImage?
-    func rawImageUrl(for indexPath: IndexPath) -> String
 }
