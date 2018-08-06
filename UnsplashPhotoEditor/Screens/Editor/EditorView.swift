@@ -16,12 +16,7 @@ final class EditorView: BaseView {
         return imageView
     }()
     
-    let colorsPaletteImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "colorsPallette")
-        imageView.isUserInteractionEnabled = true
-        return imageView
-    }()
+    let gradientView = GradientView()
     
     let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -62,12 +57,12 @@ final class EditorView: BaseView {
         }
         stackView.addArrangedSubview(gradientButton)
         
-        [scrollView, shareButton, cancelButton, stackView, colorsPaletteImageView].forEach {
+        [scrollView, shareButton, cancelButton, stackView, gradientView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
      
-        colorsPaletteImageView.isHidden = true
+        gradientView.isHidden = true
         
         addConstraints([
             shareButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
@@ -109,10 +104,8 @@ final class EditorView: BaseView {
             gradientButton.widthAnchor.constraint(equalTo: gradientButton.heightAnchor)
         ])
         addConstraints([
-            colorsPaletteImageView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
-            colorsPaletteImageView.heightAnchor.constraint(equalToConstant: 200),
-            colorsPaletteImageView.widthAnchor.constraint(equalToConstant: 200),
-            colorsPaletteImageView.topAnchor.constraint(equalTo: gradientButton.bottomAnchor, constant: .minimumMargin)
+            gradientView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+            gradientView.topAnchor.constraint(equalTo: gradientButton.bottomAnchor, constant: .minimumMargin)
         ])
     }
 }

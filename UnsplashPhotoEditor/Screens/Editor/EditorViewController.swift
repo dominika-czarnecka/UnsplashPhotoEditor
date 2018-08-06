@@ -22,19 +22,21 @@ final class EditorViewController: UIViewController {
         customView.cancelButton.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
         customView.shareButton.addTarget(self, action: #selector(shareButtonAction), for: .touchUpInside)
         customView.gradientButton.addTarget(self, action: #selector(gradientButtonAction), for: .touchUpInside)
-        
-        let tapGestureRecognized = UITapGestureRecognizer(target: self, action: #selector(zoomToDefaultScale))
-        tapGestureRecognized.numberOfTapsRequired = 2
-        customView.scrollView.addGestureRecognizer(tapGestureRecognized)
-        
-        let colorPaletteTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(colorPaletteTapAction))
-        tapGestureRecognized.numberOfTapsRequired = 1
-        customView.colorsPaletteImageView.addGestureRecognizer(colorPaletteTapGestureRecognizer)
     }
     
     @available(*, unavailable, message: "Use init(_ model: EditorViewModelProtocol, rawImageUrl: URL)")
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let tapGestureRecognized = UITapGestureRecognizer(target: self, action: #selector(zoomToDefaultScale))
+        tapGestureRecognized.numberOfTapsRequired = 2
+        customView.scrollView.addGestureRecognizer(tapGestureRecognized)
+        
+        setupGradientView()
     }
     
     func getPhotoFromServer() {
@@ -59,6 +61,14 @@ final class EditorViewController: UIViewController {
         }).resume()
     }
     
+    private func setupGradientView() {
+        let colorPaletteTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(colorPaletteTapAction))
+        print(customView.gradientView.colorsPaletteImageView)
+        customView.gradientView.colorsPaletteImageView.addGestureRecognizer(colorPaletteTapGestureRecognizer)
+        
+        customView.gradientView.clearButton.addTarget(self, action: #selector(gradientClearButtonAction), for: .touchUpInside)
+    }
+    
     @objc func zoomToDefaultScale() {
         let widthScale = customView.scrollView.frame.width / (viewModel.photo.width ?? 0)
         let heightScale = customView.scrollView.frame.height / (viewModel.photo.height ?? 0)
@@ -74,17 +84,21 @@ final class EditorViewController: UIViewController {
     @objc func shareButtonAction() { }
     
     @objc func gradientButtonAction() {
-        customView.colorsPaletteImageView.isHidden = !customView.colorsPaletteImageView.isHidden
+        customView.gradientView.isHidden = !customView.gradientView.isHidden
     }
     
     @objc func colorPaletteTapAction(_ sender: UITapGestureRecognizer) {
-        let selectedPoint = sender.location(in: customView.colorsPaletteImageView)
-        let color = customView.colorsPaletteImageView.layer.colorOfPoint(point: selectedPoint)
+        let selectedPoint = sender.location(in: customView.gradientView.colorsPaletteImageView)
+        let color = customView.gradientView.colorsPaletteImageView.layer.colorOfPoint(point: selectedPoint)
         let scale = customView.scrollView.zoomScale
 
         viewModel.gradient.frame = CGRect(origin: customView.scrollView.frame.origin, size: CGSize(width: customView.imageView.frame.width / scale, height: customView.imageView.frame.height / scale))
         viewModel.gradient.colors = [UIColor.clear.cgColor, color]
         customView.imageView.layer.addSublayer(viewModel.gradient)
+    }
+    
+    @objc func gradientClearButtonAction() {
+        viewModel.gradient.removeFromSuperlayer()
     }
 }
 

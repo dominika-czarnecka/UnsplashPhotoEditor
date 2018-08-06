@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		151869C521178FF300A6EEEA /* CALayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151869C421178FF300A6EEEA /* CALayer+Extensions.swift */; };
+		151EA74B211843E30073969A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EA74A211843E30073969A /* GradientView.swift */; };
+		151EA74D211845E80073969A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EA74C211845E80073969A /* String+Extensions.swift */; };
+		151EA74F21184D490073969A /* ModificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EA74E21184D490073969A /* ModificationView.swift */; };
+		151EA752211854850073969A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 151EA754211854850073969A /* Localizable.strings */; };
 		158AE7F421131E14007320CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE7F321131E14007320CF /* AppDelegate.swift */; };
 		158AE7FB21131E15007320CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FA21131E15007320CF /* Assets.xcassets */; };
 		158AE7FE21131E15007320CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FC21131E15007320CF /* LaunchScreen.storyboard */; };
@@ -48,6 +52,10 @@
 
 /* Begin PBXFileReference section */
 		151869C421178FF300A6EEEA /* CALayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Extensions.swift"; sourceTree = "<group>"; };
+		151EA74A211843E30073969A /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		151EA74C211845E80073969A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		151EA74E21184D490073969A /* ModificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModificationView.swift; sourceTree = "<group>"; };
+		151EA753211854850073969A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		158AE7F021131E14007320CF /* UnsplashPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158AE7F321131E14007320CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158AE7FA21131E15007320CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		151EA749211843CC0073969A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				151EA74A211843E30073969A /* GradientView.swift */,
+				151EA74E21184D490073969A /* ModificationView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		158AE7E721131E14007320CF = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +166,7 @@
 				158AE7FA21131E15007320CF /* Assets.xcassets */,
 				158AE7FC21131E15007320CF /* LaunchScreen.storyboard */,
 				158AE7FF21131E15007320CF /* Info.plist */,
+				151EA754211854850073969A /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -174,6 +192,7 @@
 		158AE82E211321BC007320CF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				151EA74C211845E80073969A /* String+Extensions.swift */,
 				158AE82F211321DC007320CF /* UIColor+Extensions.swift */,
 				15F2764121174B3C00BFEA3B /* CGFloat+Extensions.swift */,
 				151869C421178FF300A6EEEA /* CALayer+Extensions.swift */,
@@ -248,6 +267,7 @@
 		15F2760D21173A5400BFEA3B /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				151EA749211843CC0073969A /* Views */,
 				15F2762021173D1800BFEA3B /* EditorViewController.swift */,
 				15F2762121173D1800BFEA3B /* EditorView.swift */,
 				15F2762221173D1800BFEA3B /* EditorViewModel.swift */,
@@ -339,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				158AE7FE21131E15007320CF /* LaunchScreen.storyboard in Resources */,
+				151EA752211854850073969A /* Localizable.strings in Resources */,
 				158AE7FB21131E15007320CF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +397,8 @@
 			files = (
 				158AE836211326D4007320CF /* WallView.swift in Sources */,
 				151869C521178FF300A6EEEA /* CALayer+Extensions.swift in Sources */,
+				151EA74F21184D490073969A /* ModificationView.swift in Sources */,
+				151EA74B211843E30073969A /* GradientView.swift in Sources */,
 				15F2762721173D6900BFEA3B /* EditorViewModelProtocol.swift in Sources */,
 				158AE84021133392007320CF /* ApiManager.swift in Sources */,
 				158AE7F421131E14007320CF /* AppDelegate.swift in Sources */,
@@ -392,6 +415,7 @@
 				15F2762321173D1800BFEA3B /* EditorViewController.swift in Sources */,
 				158AE84221133441007320CF /* APIRequest.swift in Sources */,
 				15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */,
+				151EA74D211845E80073969A /* String+Extensions.swift in Sources */,
 				15F275F72115C91D00BFEA3B /* WallCollectionViewCell.swift in Sources */,
 				158AE830211321DC007320CF /* UIColor+Extensions.swift in Sources */,
 				15F2762421173D1800BFEA3B /* EditorView.swift in Sources */,
@@ -420,6 +444,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		151EA754211854850073969A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				151EA753211854850073969A /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		158AE7FC21131E15007320CF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
