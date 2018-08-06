@@ -10,6 +10,8 @@ class FilterView: ModificationView {
     override func setupView() {
         super.setupView()
         
+        titleLabel.text = "FilterView.Title".localized
+        
         [tableView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)

@@ -18,12 +18,6 @@ final class EditorViewController: UIViewController {
         getPhotoFromServer()
         
         customView.scrollView.delegate = self
-        customView.filterView.tableView.delegate = self
-        customView.filterView.tableView.dataSource = self
-        customView.filterView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "filterCell")
-        
-        customView.gradientButton.addTarget(self, action: #selector(gradientButtonAction), for: .touchUpInside)
-        customView.filterButton.addTarget(self, action: #selector(filterButtonAction), for: .touchUpInside)
     }
     
     @available(*, unavailable, message: "Use init(_ model: EditorViewModelProtocol, rawImageUrl: URL)")
@@ -38,7 +32,11 @@ final class EditorViewController: UIViewController {
         tapGestureRecognized.numberOfTapsRequired = 2
         customView.scrollView.addGestureRecognizer(tapGestureRecognized)
         
+        let shareBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
+        navigationItem.rightBarButtonItem = shareBarButton
+        
         setupGradientView()
+        setupFilterView()
     }
     
     func getPhotoFromServer() {
@@ -69,6 +67,16 @@ final class EditorViewController: UIViewController {
         customView.gradientView.colorsPaletteImageView.addGestureRecognizer(colorPaletteTapGestureRecognizer)
         
         customView.gradientView.clearButton.addTarget(self, action: #selector(gradientClearButtonAction), for: .touchUpInside)
+        customView.gradientButton.addTarget(self, action: #selector(gradientButtonAction), for: .touchUpInside)
+    }
+    
+    private func setupFilterView() {
+        customView.filterView.tableView.delegate = self
+        customView.filterView.tableView.dataSource = self
+        customView.filterView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "filterCell")
+        
+        customView.filterView.clearButton.addTarget(self, action: #selector(filterClearButtonAction), for: .touchUpInside)
+        customView.filterButton.addTarget(self, action: #selector(filterButtonAction), for: .touchUpInside)
     }
     
     @objc func zoomToDefaultScale() {
@@ -98,6 +106,22 @@ final class EditorViewController: UIViewController {
     
     @objc func filterButtonAction() {
         customView.filterView.isHidden = !customView.filterView.isHidden
+    }
+    
+    @objc func filterClearButtonAction() {
+        customView.imageView.image = viewModel.image
+    }
+    
+    @objc func shareButtonAction() {
+//        guard let currentContext = UIGraphicsGetCurrentContext() else { return }
+//        UIGraphicsBeginImageContext(customView.imageView.bounds.size);
+//        customView.imageView.layer.render(in: currentContext)
+//        let image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+
+        guard let image = customView.imageView.image else { return }
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
 }
 

@@ -1,5 +1,6 @@
 
 "GradientView.Title" = "Choose gradient";
+"FilterView.Title" = "Choose filter";
 "Gradient.ClearButton.Title" = "Clear";
 
 "EditorView.GradientButton.Title" = "Gradient";
