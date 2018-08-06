@@ -92,7 +92,7 @@ final class EditorViewController: UIViewController {
         let color = customView.gradientView.colorsPaletteImageView.layer.colorOfPoint(point: selectedPoint)
         let scale = customView.scrollView.zoomScale
 
-        viewModel.gradient.frame = CGRect(origin: customView.scrollView.frame.origin, size: CGSize(width: customView.imageView.frame.width / scale, height: customView.imageView.frame.height / scale))
+        viewModel.gradient.frame = CGRect(origin: customView.imageView.frame.origin, size: CGSize(width: customView.imageView.frame.width / scale, height: customView.imageView.frame.height / scale))
         viewModel.gradient.colors = [UIColor.clear.cgColor, color]
         customView.imageView.layer.addSublayer(viewModel.gradient)
     }

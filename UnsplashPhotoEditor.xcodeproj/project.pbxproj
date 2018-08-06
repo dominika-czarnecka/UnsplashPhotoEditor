@@ -12,6 +12,8 @@
 		151EA74D211845E80073969A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EA74C211845E80073969A /* String+Extensions.swift */; };
 		151EA74F21184D490073969A /* ModificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EA74E21184D490073969A /* ModificationView.swift */; };
 		151EA752211854850073969A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 151EA754211854850073969A /* Localizable.strings */; };
+		151EA7572118560B0073969A /* GradientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EA7562118560B0073969A /* GradientTests.swift */; };
+		151EA75B211858570073969A /* EditorViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151EA75A211858570073969A /* EditorViewModelMock.swift */; };
 		158AE7F421131E14007320CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158AE7F321131E14007320CF /* AppDelegate.swift */; };
 		158AE7FB21131E15007320CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FA21131E15007320CF /* Assets.xcassets */; };
 		158AE7FE21131E15007320CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158AE7FC21131E15007320CF /* LaunchScreen.storyboard */; };
@@ -56,6 +58,8 @@
 		151EA74C211845E80073969A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		151EA74E21184D490073969A /* ModificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModificationView.swift; sourceTree = "<group>"; };
 		151EA753211854850073969A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		151EA7562118560B0073969A /* GradientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientTests.swift; sourceTree = "<group>"; };
+		151EA75A211858570073969A /* EditorViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModelMock.swift; sourceTree = "<group>"; };
 		158AE7F021131E14007320CF /* UnsplashPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnsplashPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158AE7F321131E14007320CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158AE7FA21131E15007320CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +119,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		151EA755211855EF0073969A /* ModificationsTests */ = {
+			isa = PBXGroup;
+			children = (
+				151EA7562118560B0073969A /* GradientTests.swift */,
+			);
+			path = ModificationsTests;
+			sourceTree = "<group>";
+		};
+		151EA75D21186DDC0073969A /* WallTests */ = {
+			isa = PBXGroup;
+			children = (
+				15F276032117206D00BFEA3B /* WallViewControllerTests.swift */,
+				15F276002117161B00BFEA3B /* WallViewModelTests.swift */,
+			);
+			path = WallTests;
+			sourceTree = "<group>";
+		};
+		151EA75E21186DF80073969A /* ModelsTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelsTests;
+			sourceTree = "<group>";
+		};
 		158AE7E721131E14007320CF = {
 			isa = PBXGroup;
 			children = (
@@ -150,11 +178,12 @@
 		158AE80721131E15007320CF /* UnsplashPhotoEditorTests */ = {
 			isa = PBXGroup;
 			children = (
-				15F276052117237F00BFEA3B /* Mocks */,
+				151EA75E21186DF80073969A /* ModelsTests */,
 				15F2760B21172D4800BFEA3B /* PhotosTests.swift */,
-				15F276002117161B00BFEA3B /* WallViewModelTests.swift */,
+				151EA75D21186DDC0073969A /* WallTests */,
+				151EA755211855EF0073969A /* ModificationsTests */,
+				15F276052117237F00BFEA3B /* Mocks */,
 				158AE80A21131E15007320CF /* Info.plist */,
-				15F276032117206D00BFEA3B /* WallViewControllerTests.swift */,
 			);
 			path = UnsplashPhotoEditorTests;
 			sourceTree = "<group>";
@@ -251,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				15F27606211723AA00BFEA3B /* WallViewModelMock.swift */,
+				151EA75A211858570073969A /* EditorViewModelMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -427,7 +457,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				15F2760C21172D4800BFEA3B /* PhotosTests.swift in Sources */,
+				151EA7572118560B0073969A /* GradientTests.swift in Sources */,
 				15F27607211723AA00BFEA3B /* WallViewModelMock.swift in Sources */,
+				151EA75B211858570073969A /* EditorViewModelMock.swift in Sources */,
 				15F276042117206D00BFEA3B /* WallViewControllerTests.swift in Sources */,
 				15F276012117161B00BFEA3B /* WallViewModelTests.swift in Sources */,
 			);
