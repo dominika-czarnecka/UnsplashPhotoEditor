@@ -16,6 +16,12 @@ final class EditorView: BaseView {
         return imageView
     }()
     
+    let activitiIndicatorView: UIActivityIndicatorView = {
+        let activitiIndicator = UIActivityIndicatorView()
+        activitiIndicator.color = .black
+        return activitiIndicator
+    }()
+    
     let gradientView = GradientView()
     let filterView = FilterView()
     
@@ -52,7 +58,7 @@ final class EditorView: BaseView {
         stackView.addArrangedSubview(gradientButton)
         stackView.addArrangedSubview(filterButton)
         
-        [scrollView, stackView, gradientView, filterView].forEach {
+        [scrollView, stackView, gradientView, filterView, activitiIndicatorView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
@@ -82,7 +88,10 @@ final class EditorView: BaseView {
             imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             imageView.rightAnchor.constraint(equalTo: scrollView.rightAnchor)
         ])
-        
+        addConstraints([
+            activitiIndicatorView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            activitiIndicatorView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
+        ])
         addConstraints([
             gradientView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             gradientView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.minimumMargin)

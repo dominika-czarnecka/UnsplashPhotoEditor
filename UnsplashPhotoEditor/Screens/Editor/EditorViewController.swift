@@ -15,7 +15,6 @@ final class EditorViewController: UIViewController {
     init(model: EditorViewModelProtocol) {
         viewModel = model
         super.init(nibName: nil, bundle: nil)
-        getPhotoFromServer()
         
         customView.scrollView.delegate = self
     }
@@ -27,13 +26,13 @@ final class EditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let doubleTapGestureRecognized = UITapGestureRecognizer(target: self, action: #selector(zoomToDefaultScale))
         doubleTapGestureRecognized.numberOfTapsRequired = 2
         customView.scrollView.addGestureRecognizer(doubleTapGestureRecognized)
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideAllModificationViews))
-        customView.addGestureRecognizer(tapGestureRecognizer)
+        customView.scrollView.addGestureRecognizer(tapGestureRecognizer)
         
         let shareBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = shareBarButton
@@ -42,32 +41,38 @@ final class EditorViewController: UIViewController {
         setupFilterView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getPhotoFromServer()
+    }
+    
     func getPhotoFromServer() {
-        guard let url = URL(string: viewModel.photo.urls.raw) else {
-            //TODO: Complection with alert?
-            dismiss(animated: true, completion: nil)
-            return
-        }
+        guard let url = URL(string: viewModel.photo.urls.regular) else { return }
         
-        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
+        customView.activitiIndicatorView.startAnimating()
+        URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, response, error) -> Void in
             if error != nil {
                 print(error)
+                self?.customView.activitiIndicatorView.stopAnimating()
                 return
             }
             DispatchQueue.main.async(execute: { [weak self] () -> Void in
                 guard let strongSelf = self, let data = data else { return }
                 let image = UIImage(data: data)
-                strongSelf.viewModel.image = image
                 strongSelf.zoomToDefaultScale()
+                strongSelf.viewModel.image = image
                 strongSelf.customView.imageView.image = image
+                strongSelf.customView.activitiIndicatorView.stopAnimating()
             })
         }).resume()
     }
     
     private func setupGradientView() {
         let colorPaletteTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(colorPaletteTapAction))
-        print(customView.gradientView.colorsPaletteImageView)
         customView.gradientView.colorsPaletteImageView.addGestureRecognizer(colorPaletteTapGestureRecognizer)
+        
+        let gradientViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(moveGradientView))
+        customView.gradientView.addGestureRecognizer(gradientViewPanGesture)
         
         customView.gradientView.clearButton.addTarget(self, action: #selector(gradientClearButtonAction), for: .touchUpInside)
         customView.gradientButton.addTarget(self, action: #selector(gradientButtonAction), for: .touchUpInside)
@@ -78,6 +83,9 @@ final class EditorViewController: UIViewController {
         customView.filterView.tableView.dataSource = self
         customView.filterView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "filterCell")
         
+        let filterViewPanGesture = UIPanGestureRecognizer(target: self, action: #selector(moveFilterView))
+        customView.filterView.addGestureRecognizer(filterViewPanGesture)
+        
         customView.filterView.clearButton.addTarget(self, action: #selector(filterClearButtonAction), for: .touchUpInside)
         customView.filterButton.addTarget(self, action: #selector(filterButtonAction), for: .touchUpInside)
     }
@@ -86,12 +94,28 @@ final class EditorViewController: UIViewController {
         let widthScale = customView.scrollView.frame.width / (viewModel.photo.width ?? 0)
         let heightScale = customView.scrollView.frame.height / (viewModel.photo.height ?? 0)
         customView.scrollView.minimumZoomScale = min(widthScale, heightScale)
-        customView.scrollView.setZoomScale(min(widthScale, heightScale), animated: true)
+        customView.scrollView.setZoomScale(min(widthScale, heightScale), animated: false)
     }
     
     @objc func hideAllModificationViews() {
         customView.gradientView.isHidden = true
         customView.filterView.isHidden = true
+    }
+    
+    @objc func moveGradientView(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self.view)
+        if let view = sender.view {
+            view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
+        }
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
+    
+    @objc func moveFilterView(_ sender: UIPanGestureRecognizer) {
+        let translation = sender.translation(in: self.view)
+        if let view = sender.view {
+            view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
+        }
+        sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
     @objc func gradientButtonAction() {

@@ -1,12 +1,12 @@
 import Foundation
 
 struct PhotoUrls: Codable {
-    var raw: String
+    var regular: String
     var thumb: String
     
-    init?(raw: String?, thumb: String?) {
-        guard let raw = raw, let thumb = thumb else { return nil }
-        self.raw = raw
+    init?(regular: String?, thumb: String?) {
+        guard let regular = regular, let thumb = thumb else { return nil }
+        self.regular = regular
         self.thumb = thumb
     }
 }
