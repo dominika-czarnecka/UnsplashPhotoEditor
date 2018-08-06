@@ -19,6 +19,9 @@ class ModificationView: UIView {
         super.init(frame: frame)
         setupView()
         backgroundColor = .background
+        layer.cornerRadius = 5
+        layer.borderColor = UIColor.black.cgColor
+        layer.borderWidth = 2
     }
     @available(*, unavailable, message: "Use init(frame: CGRect) insted")
     required init?(coder aDecoder: NSCoder) {
@@ -27,8 +30,7 @@ class ModificationView: UIView {
     
     func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
-        
-        addConstraint(widthAnchor.constraint(equalToConstant: 200))
+        addConstraint(widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.5))
         
         [titleLabel, clearButton].forEach ({
             $0.translatesAutoresizingMaskIntoConstraints = false

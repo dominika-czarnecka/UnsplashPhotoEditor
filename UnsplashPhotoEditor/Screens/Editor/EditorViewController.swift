@@ -28,9 +28,12 @@ final class EditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGestureRecognized = UITapGestureRecognizer(target: self, action: #selector(zoomToDefaultScale))
-        tapGestureRecognized.numberOfTapsRequired = 2
-        customView.scrollView.addGestureRecognizer(tapGestureRecognized)
+        let doubleTapGestureRecognized = UITapGestureRecognizer(target: self, action: #selector(zoomToDefaultScale))
+        doubleTapGestureRecognized.numberOfTapsRequired = 2
+        customView.scrollView.addGestureRecognizer(doubleTapGestureRecognized)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideAllModificationViews))
+        customView.addGestureRecognizer(tapGestureRecognizer)
         
         let shareBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(shareButtonAction))
         navigationItem.rightBarButtonItem = shareBarButton
@@ -86,6 +89,11 @@ final class EditorViewController: UIViewController {
         customView.scrollView.setZoomScale(min(widthScale, heightScale), animated: true)
     }
     
+    @objc func hideAllModificationViews() {
+        customView.gradientView.isHidden = true
+        customView.filterView.isHidden = true
+    }
+    
     @objc func gradientButtonAction() {
         customView.gradientView.isHidden = !customView.gradientView.isHidden
     }
@@ -113,13 +121,13 @@ final class EditorViewController: UIViewController {
     }
     
     @objc func shareButtonAction() {
-//        guard let currentContext = UIGraphicsGetCurrentContext() else { return }
-//        UIGraphicsBeginImageContext(customView.imageView.bounds.size);
-//        customView.imageView.layer.render(in: currentContext)
-//        let image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
+        UIGraphicsBeginImageContext(customView.imageView.bounds.size)
+        guard let currentContext = UIGraphicsGetCurrentContext() else { return }
+        customView.imageView.layer.render(in: currentContext)
+        
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        UIGraphicsEndImageContext()
 
-        guard let image = customView.imageView.image else { return }
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
@@ -146,6 +154,7 @@ extension EditorViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
         cell.textLabel?.text = viewModel.avaluableFiltersNames[indexPath.row]
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
         return cell
     }
     
@@ -160,6 +169,7 @@ extension EditorViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let outputImage = filter!.outputImage,
             let cgimg = viewModel.context.createCGImage(outputImage, from: outputImage.extent) else { return }
+        
         customView.imageView.image = UIImage(cgImage: cgimg)
     }
 }

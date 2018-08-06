@@ -26,16 +26,14 @@ final class EditorView: BaseView {
         return stackView
     }()
     
-    let gradientButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .gray
+    let gradientButton: StackViewButton = {
+        let button = StackViewButton()
         button.setTitle("EditorView.GradientButton.Title".localized, for: .normal)
         return button
     }()
     
-    let filterButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .gray
+    let filterButton: StackViewButton = {
+        let button = StackViewButton()
         button.setTitle("EditorView.FilterButton.Title".localized, for: .normal)
         return button
     }()
