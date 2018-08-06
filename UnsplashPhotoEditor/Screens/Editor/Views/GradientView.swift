@@ -8,8 +8,8 @@ final class GradientView: ModificationView {
         return imageView
     }()
     
-    override func setupConstraints() {
-        super.setupConstraints()
+    override func setupView() {
+        super.setupView()
         
         titleLabel.text = "GradientView.Title".localized
         
@@ -17,12 +17,6 @@ final class GradientView: ModificationView {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
-        
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        addConstraints([
-            widthAnchor.constraint(equalToConstant: 200)
-        ])
         
         addConstraints([
             colorsPaletteImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .minimumMargin),

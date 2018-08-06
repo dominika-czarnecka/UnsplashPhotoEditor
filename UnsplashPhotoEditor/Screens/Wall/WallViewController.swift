@@ -77,7 +77,7 @@ extension WallViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let photo = viewModel.photosList[indexPath.item]
-        present(EditorViewController(model: EditorViewModel(photo: photo)), animated: true, completion: nil)
+        navigationController?.pushViewController(EditorViewController(model: EditorViewModel(photo: photo)), animated: true)
     }
 }
 

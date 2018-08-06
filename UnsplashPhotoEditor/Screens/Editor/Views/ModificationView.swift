@@ -17,14 +17,19 @@ class ModificationView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupConstraints()
+        setupView()
+        backgroundColor = .background
     }
     @available(*, unavailable, message: "Use init(frame: CGRect) insted")
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupConstraints() {
+    func setupView() {
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        addConstraint(widthAnchor.constraint(equalToConstant: 200))
+        
         [titleLabel, clearButton].forEach ({
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)

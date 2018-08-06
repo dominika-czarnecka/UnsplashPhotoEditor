@@ -18,10 +18,12 @@ final class EditorViewController: UIViewController {
         getPhotoFromServer()
         
         customView.scrollView.delegate = self
+        customView.filterView.tableView.delegate = self
+        customView.filterView.tableView.dataSource = self
+        customView.filterView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "filterCell")
         
-        customView.cancelButton.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
-        customView.shareButton.addTarget(self, action: #selector(shareButtonAction), for: .touchUpInside)
         customView.gradientButton.addTarget(self, action: #selector(gradientButtonAction), for: .touchUpInside)
+        customView.filterButton.addTarget(self, action: #selector(filterButtonAction), for: .touchUpInside)
     }
     
     @available(*, unavailable, message: "Use init(_ model: EditorViewModelProtocol, rawImageUrl: URL)")
@@ -76,13 +78,6 @@ final class EditorViewController: UIViewController {
         customView.scrollView.setZoomScale(min(widthScale, heightScale), animated: true)
     }
     
-    @objc func cancelButtonAction() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    //TODO: Handle this
-    @objc func shareButtonAction() { }
-    
     @objc func gradientButtonAction() {
         customView.gradientView.isHidden = !customView.gradientView.isHidden
     }
@@ -93,12 +88,16 @@ final class EditorViewController: UIViewController {
         let scale = customView.scrollView.zoomScale
 
         viewModel.gradient.frame = CGRect(origin: customView.imageView.frame.origin, size: CGSize(width: customView.imageView.frame.width / scale, height: customView.imageView.frame.height / scale))
-        viewModel.gradient.colors = [UIColor.clear.cgColor, color]
+        viewModel.gradient.colors = [UIColor.clear.cgColor, color.cgColor]
         customView.imageView.layer.addSublayer(viewModel.gradient)
     }
     
     @objc func gradientClearButtonAction() {
         viewModel.gradient.removeFromSuperlayer()
+    }
+    
+    @objc func filterButtonAction() {
+        customView.filterView.isHidden = !customView.filterView.isHidden
     }
 }
 
@@ -112,5 +111,31 @@ extension EditorViewController: UIScrollViewDelegate {
         let offsetY = max((scrollView.bounds.size.height - (viewModel.photo.height ?? 0) * scrollView.zoomScale) * 0.5, CGFloat(0.0))
         customView.imageViewTopConstraint?.constant = offsetY
         customView.imageViewLeftConstraint?.constant = offsetX
+    }
+}
+
+extension EditorViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.avaluableFiltersNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
+        cell.textLabel?.text = viewModel.avaluableFiltersNames[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let image = viewModel.image else { return }
+        let beginImage = CIImage(image: image)
+        
+        let filter = CIFilter(name: viewModel.avaluableFilters[indexPath.row])
+        filter!.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        guard let outputImage = filter!.outputImage,
+            let cgimg = viewModel.context.createCGImage(outputImage, from: outputImage.extent) else { return }
+        customView.imageView.image = UIImage(cgImage: cgimg)
     }
 }

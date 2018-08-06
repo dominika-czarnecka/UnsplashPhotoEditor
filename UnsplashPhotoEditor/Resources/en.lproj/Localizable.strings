@@ -1,3 +1,11 @@
 
 "GradientView.Title" = "Choose gradient";
 "Gradient.ClearButton.Title" = "Clear";
+
+"EditorView.GradientButton.Title" = "Gradient";
+"EditorView.FilterButton.Title" = "Filter";
+
+"Filter.SepiaTone.Name" = "Sepia";
+"Filter.ColorInvert.Name" = "Invert colors";
+"Filter.ColorPosterize.Name" = "Posterize colors";
+"Filter.SoftLightBlendMode.Name" = "Blend mode - soft light";
