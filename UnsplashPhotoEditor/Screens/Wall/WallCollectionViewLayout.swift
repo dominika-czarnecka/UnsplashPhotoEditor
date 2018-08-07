@@ -25,7 +25,7 @@ class WallCollectionViewLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
-        guard cache.isEmpty == true, let collectionView = collectionView, let delegate = delegate else { return }
+        guard let collectionView = collectionView, let delegate = delegate else { return }
 
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset = [CGFloat]()

@@ -18,5 +18,4 @@ final class WallView: BaseView {
             collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor)
         ])
     }
-    
 }
