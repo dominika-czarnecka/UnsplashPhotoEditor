@@ -9,9 +9,9 @@ class WallViewModelTests: XCTestCase {
         super.setUp()
         wallViewModel = WallViewModel()
         photos = [
-            Photo("0", urls: PhotoUrls(raw: "raw", thumb: "thumb"), width: 200, height: 200),
-            Photo("1", urls: PhotoUrls(raw: "raw", thumb: "thumb"), width: 200, height: 200),
-            Photo("2", urls: PhotoUrls(raw: "raw", thumb: "thumb"), width: 200, height: 200)
+            Photo("0", urls: PhotoUrls(regular: "raw", thumb: "thumb"), width: 200, height: 200),
+            Photo("1", urls: PhotoUrls(regular: "raw", thumb: "thumb"), width: 200, height: 200),
+            Photo("2", urls: PhotoUrls(regular: "raw", thumb: "thumb"), width: 200, height: 200)
         ].compactMap { $0 }
     }
     

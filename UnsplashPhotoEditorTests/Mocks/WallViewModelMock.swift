@@ -5,11 +5,14 @@ import UIKit
 class WallViewModelMock: WallViewModelProtocol {    
     weak var delegate: WallViewDelegate?
 
+    var photosPerPage: Int = 10
+    var currntPage: Int = 0
+    
     var photosList: [Photo] = {
         return [
-            Photo("0", urls: PhotoUrls(raw: "raw", thumb: "thumb"), width: 300, height: 500),
-            Photo("1", urls: PhotoUrls(raw: "raw", thumb: "thumb"), width: 200, height: 300),
-            Photo("2", urls: PhotoUrls(raw: "raw", thumb: "thumb"), width: 400, height: 200)
+            Photo("0", urls: PhotoUrls(regular: "raw", thumb: "thumb"), width: 300, height: 500),
+            Photo("1", urls: PhotoUrls(regular: "raw", thumb: "thumb"), width: 200, height: 300),
+            Photo("2", urls: PhotoUrls(regular: "raw", thumb: "thumb"), width: 400, height: 200)
         ].compactMap { $0 }
     }()
  

@@ -8,6 +8,9 @@ protocol WallViewDelegate: AnyObject {
 class WallViewModel: WallViewModelProtocol {
     weak var delegate: WallViewDelegate?
     
+    var photosPerPage: Int = 10
+    var currntPage: Int = 0
+    
     var photosList: [Photo] = [] {
         didSet {
             photosImages.append(contentsOf: Array(repeating: nil, count: photosList.count - oldValue.count))
