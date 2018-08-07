@@ -2,16 +2,15 @@ import UIKit
 
 class WallCollectionViewCell: UICollectionViewCell {
     let imageView: UIImageView = {
-       let imageView = UIImageView()
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 15
-
         return imageView
     }()
     
     let activitiIndicatorView: UIActivityIndicatorView = {
-       let activitiIndicator = UIActivityIndicatorView()
+        let activitiIndicator = UIActivityIndicatorView()
         activitiIndicator.color = .black
         return activitiIndicator
     }()
@@ -36,10 +35,8 @@ class WallCollectionViewCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.leftAnchor.constraint(equalTo: leftAnchor),
-            imageView.rightAnchor.constraint(equalTo: rightAnchor)
-        ])
-        
-        addConstraints([
+            imageView.rightAnchor.constraint(equalTo: rightAnchor),
+            
             activitiIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor),
             activitiIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])

@@ -4,7 +4,7 @@ protocol WallViewModelProtocol {
     weak var delegate: WallViewDelegate? { get set }
     
     var photosPerPage: Int { get }
-    var currntPage: Int { get set }
+    var currentPage: Int { get set }
     var photosList: [Photo] { get set }
     var photosImages: [UIImage?] { get set }
     

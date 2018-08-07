@@ -9,7 +9,7 @@ extension CALayer {
 
         let context = CGContext(data: &pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)
         context!.translateBy(x: -point.x, y: -point.y)
-        self.render(in: context!)
+        render(in: context!)
 
         let red: CGFloat   = (CGFloat(pixel[0]) / 255.0 * 100).rounded(.down) / 100
         let green: CGFloat = (CGFloat(pixel[1]) / 255.0 * 100).rounded(.down) / 100

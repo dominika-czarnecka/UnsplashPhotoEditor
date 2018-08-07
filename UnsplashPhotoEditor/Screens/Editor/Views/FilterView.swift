@@ -3,7 +3,7 @@ import UIKit
 
 class FilterView: ModificationView {
     let tableView: UITableView = {
-       let tableView = UITableView()
+        let tableView = UITableView()
         return tableView
     }()
     

@@ -1,6 +1,7 @@
 import UIKit
 
 class BaseView: UIView {
+    
     init() {
         super.init(frame: .zero)
         configureConstraints()

@@ -52,7 +52,6 @@ final class EditorViewController: UIViewController {
         customView.activitiIndicatorView.startAnimating()
         URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, response, error) -> Void in
             if error != nil {
-                print(error)
                 self?.customView.activitiIndicatorView.stopAnimating()
                 return
             }
@@ -172,12 +171,12 @@ extension EditorViewController: UIScrollViewDelegate {
 
 extension EditorViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.avaluableFiltersNames.count
+        return viewModel.availableFiltersNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath)
-        cell.textLabel?.text = viewModel.avaluableFiltersNames[indexPath.row]
+        cell.textLabel?.text = viewModel.availableFiltersNames[indexPath.row]
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         return cell
     }
@@ -188,10 +187,11 @@ extension EditorViewController: UITableViewDataSource, UITableViewDelegate {
         guard let image = viewModel.image else { return }
         let beginImage = CIImage(image: image)
         
-        let filter = CIFilter(name: viewModel.avaluableFilters[indexPath.row])
-        filter!.setValue(beginImage, forKey: kCIInputImageKey)
+        guard let filter = CIFilter(name: viewModel.availableFilters[indexPath.row]) else { return }
         
-        guard let outputImage = filter!.outputImage,
+        filter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        guard let outputImage = filter.outputImage,
             let cgimg = viewModel.context.createCGImage(outputImage, from: outputImage.extent) else { return }
         
         customView.imageView.image = UIImage(cgImage: cgimg)

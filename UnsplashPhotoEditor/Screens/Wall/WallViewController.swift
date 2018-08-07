@@ -3,7 +3,8 @@ import UIKit
 
 final class WallViewController: UIViewController {
     private var viewModel: WallViewModelProtocol
-
+    private var timer: Timer?
+    
     var customView: WallView {
         get { return view as! WallView }
     }
@@ -24,32 +25,34 @@ final class WallViewController: UIViewController {
     
     override func viewDidLoad() {
         customView.collectionView.register(WallCollectionViewCell.self, forCellWithReuseIdentifier: "WallCell")
-        
         customView.collectionView.dataSource = self
         customView.collectionView.delegate = self
+        (customView.collectionView.collectionViewLayout as? WallCollectionViewLayout)?.delegate = self
         
-        if let layout = customView.collectionView.collectionViewLayout as? WallCollectionViewLayout {
-            layout.delegate = self
-        }
         viewModel.delegate = self
         
         getNextpageOfPhotosListFromServer()
     }
     
-    private func getNextpageOfPhotosListFromServer() {
-        viewModel.currntPage += 1
-        ApiManager().send(GetPhotosRequest(page: viewModel.currntPage), for: [Photo].self) { [weak self] (photos, error) in
-            guard error == nil else {
-                print(error!)
-                return
-            }
- 
-            DispatchQueue.main.async {
-                guard let strongSelf = self, let photos = photos else { return }
+    @objc func getNextpageOfPhotosListFromServer() {
+        if Reachability.isConnectedToNetwork() {
+            customView.noInternetConnectionLabel.isHidden = true
+            timer?.invalidate()
+            viewModel.currentPage += 1
+            
+            ApiManager().send(GetPhotosRequest(page: viewModel.currentPage), for: [Photo].self) { [weak self] (photos, error) in
+                guard error == nil else { return }
                 
-                strongSelf.viewModel.photosList.append(contentsOf: photos)
-                self?.customView.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    guard let strongSelf = self, let photos = photos else { return }
+                    strongSelf.viewModel.photosList.append(contentsOf: photos)
+                    self?.customView.collectionView.reloadData()
+                }
             }
+        } else {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getNextpageOfPhotosListFromServer), userInfo: nil, repeats: false)
+            customView.noInternetConnectionLabel.isHidden = false
         }
     }
 }
@@ -62,7 +65,7 @@ extension WallViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallCell", for: indexPath) as? WallCollectionViewCell else { return UICollectionViewCell() }
         
-        if indexPath.row == (viewModel.photosList.count - 5) {
+        if indexPath.row == (viewModel.photosList.count - 3) {
             getNextpageOfPhotosListFromServer()
         }
         
@@ -101,11 +104,10 @@ extension WallViewController: WallLayoutDelegate {
 extension WallViewController: WallViewDelegate {
     func getPhotoFromServer(urlString: String, for indexPathItem: Int) {
         guard let url = URL(string: urlString) else { return }
+        
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) -> Void in
-            if error != nil {
-                print(error!)
-                return
-            }
+            guard error == nil else { return }
+            
             DispatchQueue.main.async(execute: { [weak self] () -> Void in
                 guard let strongSelf = self, let data = data else { return }
                 let image = UIImage(data: data)

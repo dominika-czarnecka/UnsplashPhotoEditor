@@ -9,15 +9,14 @@ class StackViewButton: UIButton {
         layer.cornerRadius = 5
         translatesAutoresizingMaskIntoConstraints = false
         
-        addConstraints([
-            heightAnchor.constraint(equalToConstant: .buttonHeight)
-        ])
+        guard let titleLabel = titleLabel else { return }
         
-        titleLabel?.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         addConstraints([
-            titleLabel!.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel!.centerYAnchor.constraint(equalTo: centerYAnchor)
+            heightAnchor.constraint(equalToConstant: .buttonHeight),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     
@@ -25,5 +24,4 @@ class StackViewButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

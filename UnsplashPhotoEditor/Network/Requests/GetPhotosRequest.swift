@@ -7,6 +7,6 @@ class GetPhotosRequest: APIRequest {
     var headers: [String : String] = [:]
     
     init(page: Int) {
-     queries["page"] = page.description
+        queries["page"] = page.description
     }
 }

@@ -9,7 +9,7 @@ class WallViewModel: WallViewModelProtocol {
     weak var delegate: WallViewDelegate?
     
     var photosPerPage: Int = 10
-    var currntPage: Int = 0
+    var currentPage: Int = 0
     
     var photosList: [Photo] = [] {
         didSet {

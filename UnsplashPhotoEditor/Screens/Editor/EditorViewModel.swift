@@ -8,8 +8,8 @@ final class EditorViewModel: EditorViewModelProtocol {
     
     var filter: CIFilter?
     var context: CIContext = CIContext(options:nil)
-    var avaluableFiltersNames: [String] = ["Filter.SepiaTone.Name".localized, "Filter.ColorInvert.Name".localized, "Filter.ColorPosterize.Name".localized, "Filter.SoftLightBlendMode.Name".localized]
-    var avaluableFilters: [String] = ["CISepiaTone", "CIColorInvert", "CIColorPosterize", "CISoftLightBlendMode"]
+    var availableFiltersNames: [String] = ["Filter.SepiaTone.Name".localized, "Filter.ColorInvert.Name".localized, "Filter.ColorPosterize.Name".localized, "Filter.SoftLightBlendMode.Name".localized]
+    var availableFilters: [String] = ["CISepiaTone", "CIColorInvert", "CIColorPosterize", "CISoftLightBlendMode"]
     
     init(photo: Photo) {
         self.photo = photo

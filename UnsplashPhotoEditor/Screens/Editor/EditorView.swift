@@ -4,7 +4,6 @@ final class EditorView: BaseView {
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isUserInteractionEnabled = true
-        scrollView.minimumZoomScale = 1
         scrollView.maximumZoomScale = 100
         scrollView.isScrollEnabled = true
         return scrollView
@@ -49,15 +48,13 @@ final class EditorView: BaseView {
     var imageViewLeftConstraint: NSLayoutConstraint?
     
     override func configureConstraints() {
-        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(imageView)
         
         [gradientButton, filterButton].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
+            stackView.addArrangedSubview($0)
         }
-        stackView.addArrangedSubview(gradientButton)
-        stackView.addArrangedSubview(filterButton)
         
         [scrollView, stackView, gradientView, filterView, activitiIndicatorView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -83,20 +80,24 @@ final class EditorView: BaseView {
             scrollView.rightAnchor.constraint(equalTo:  safeAreaLayoutGuide.rightAnchor, constant: -.margin),
             scrollView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.margin)
         ])
+        
         addConstraints([
             imageViewTopConstraint!,
             imageViewLeftConstraint!,
             imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             imageView.rightAnchor.constraint(equalTo: scrollView.rightAnchor)
         ])
+        
         addConstraints([
             activitiIndicatorView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             activitiIndicatorView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor)
         ])
+        
         addConstraints([
             gradientView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor),
             gradientView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.minimumMargin)
         ])
+        
         addConstraints([
             filterView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
             filterView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -.minimumMargin)

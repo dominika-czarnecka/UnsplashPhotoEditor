@@ -10,3 +10,6 @@
 "Filter.ColorInvert.Name" = "Invert colors";
 "Filter.ColorPosterize.Name" = "Posterize colors";
 "Filter.SoftLightBlendMode.Name" = "Blend mode - soft light";
+
+
+"WallView.NoInternetConnection.Message" = "No internet connection :(\n Will try again soon.";

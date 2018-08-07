@@ -27,5 +27,4 @@ class Photo: Codable {
         width = 1080
         height = heightFromServer * scale
     }
-    
 }

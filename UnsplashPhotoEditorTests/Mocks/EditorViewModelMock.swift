@@ -5,8 +5,8 @@ import UIKit
 final class EditorViewModelMock: EditorViewModelProtocol {
     var filter: CIFilter? = nil
     var context: CIContext = CIContext()
-    var avaluableFiltersNames: [String] = []
-    var avaluableFilters: [String] = []
+    var availableFiltersNames: [String] = []
+    var availableFilters: [String] = []
     
     var colorpaletteimage: UIImage? = #imageLiteral(resourceName: "colorsPallette")
     var photo: Photo = Photo("0", urls: PhotoUrls(regular: "", thumb: ""), width: 300, height: 500)!
