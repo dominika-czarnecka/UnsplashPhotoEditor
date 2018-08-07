@@ -13,3 +13,4 @@
 
 
 "WallView.NoInternetConnection.Message" = "No internet connection :(\n Will try again soon.";
+"WallViewController.SearchController.Placeholder" = "Search photos";

@@ -30,6 +30,8 @@
 		15AF3956211892A200EFDC7E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15AF3955211892A200EFDC7E /* InfoPlist.strings */; };
 		15AF395B2118BDE900EFDC7E /* StackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AF395A2118BDE900EFDC7E /* StackViewButton.swift */; };
 		15AF395F211A18DA00EFDC7E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AF395E211A18DA00EFDC7E /* Reachability.swift */; };
+		15AF3961211A324500EFDC7E /* SearchPhotoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AF3960211A324500EFDC7E /* SearchPhotoRequest.swift */; };
+		15AF3963211A376600EFDC7E /* SearchPhotosResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AF3962211A376600EFDC7E /* SearchPhotosResult.swift */; };
 		15F275EE2113379700BFEA3B /* GetPhotosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */; };
 		15F275F12113383A00BFEA3B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F02113383A00BFEA3B /* Photo.swift */; };
 		15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F275F221133A2700BFEA3B /* PhotoUrls.swift */; };
@@ -84,6 +86,8 @@
 		15AF3955211892A200EFDC7E /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		15AF395A2118BDE900EFDC7E /* StackViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewButton.swift; sourceTree = "<group>"; };
 		15AF395E211A18DA00EFDC7E /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		15AF3960211A324500EFDC7E /* SearchPhotoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotoRequest.swift; sourceTree = "<group>"; };
+		15AF3962211A376600EFDC7E /* SearchPhotosResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotosResult.swift; sourceTree = "<group>"; };
 		15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPhotosRequest.swift; sourceTree = "<group>"; };
 		15F275F02113383A00BFEA3B /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		15F275F221133A2700BFEA3B /* PhotoUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUrls.swift; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				15F275ED2113379700BFEA3B /* GetPhotosRequest.swift */,
+				15AF3960211A324500EFDC7E /* SearchPhotoRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 			children = (
 				15F275F02113383A00BFEA3B /* Photo.swift */,
 				15F275F221133A2700BFEA3B /* PhotoUrls.swift */,
+				15AF3962211A376600EFDC7E /* SearchPhotosResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				15F2762721173D6900BFEA3B /* EditorViewModelProtocol.swift in Sources */,
 				15AF395F211A18DA00EFDC7E /* Reachability.swift in Sources */,
 				15AF395B2118BDE900EFDC7E /* StackViewButton.swift in Sources */,
+				15AF3963211A376600EFDC7E /* SearchPhotosResult.swift in Sources */,
 				158AE84021133392007320CF /* ApiManager.swift in Sources */,
 				158AE7F421131E14007320CF /* AppDelegate.swift in Sources */,
 				15F2762521173D1800BFEA3B /* EditorViewModel.swift in Sources */,
@@ -471,6 +478,7 @@
 				15F275F321133A2700BFEA3B /* PhotoUrls.swift in Sources */,
 				151EA74D211845E80073969A /* String+Extensions.swift in Sources */,
 				15F275F72115C91D00BFEA3B /* WallCollectionViewCell.swift in Sources */,
+				15AF3961211A324500EFDC7E /* SearchPhotoRequest.swift in Sources */,
 				158AE830211321DC007320CF /* UIColor+Extensions.swift in Sources */,
 				15F2762421173D1800BFEA3B /* EditorView.swift in Sources */,
 			);

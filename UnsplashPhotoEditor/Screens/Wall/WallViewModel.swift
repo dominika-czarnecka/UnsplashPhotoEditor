@@ -10,13 +10,18 @@ class WallViewModel: WallViewModelProtocol {
     
     var photosPerPage: Int = 10
     var currentPage: Int = 0
+    var searchText: String?
     
     var photosList: [Photo] = [] {
         didSet {
-            photosImages.append(contentsOf: Array(repeating: nil, count: photosList.count - oldValue.count))
-            photosList.enumerated().forEach { (index, photo) in
-                if index >= oldValue.count || oldValue[index].id != photo.id {
-                    delegate?.getPhotoFromServer(urlString: photo.urls.thumb, for: index)
+            if photosList.count == 0 {
+                photosImages = []
+            } else {
+                photosImages.append(contentsOf: Array(repeating: nil, count: photosList.count - oldValue.count))
+                photosList.enumerated().forEach { (index, photo) in
+                    if index >= oldValue.count || oldValue[index].id != photo.id {
+                        delegate?.getPhotoFromServer(urlString: photo.urls.thumb, for: index)
+                    }
                 }
             }
         }
@@ -35,5 +40,10 @@ class WallViewModel: WallViewModelProtocol {
         } else {
             return nil
         }
+    }
+    
+    func resetPages() {
+        currentPage = 0
+        photosList = []
     }
 }

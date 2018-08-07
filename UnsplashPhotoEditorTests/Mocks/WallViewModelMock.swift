@@ -5,6 +5,7 @@ import UIKit
 class WallViewModelMock: WallViewModelProtocol {    
     weak var delegate: WallViewDelegate?
 
+    var searchText: String?
     var photosPerPage: Int = 10
     var currentPage: Int = 0
     
@@ -29,4 +30,6 @@ class WallViewModelMock: WallViewModelProtocol {
             return nil
         }
     }
+    
+    func resetPages() {}
 }

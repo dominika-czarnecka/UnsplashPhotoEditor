@@ -3,7 +3,10 @@ import UIKit
 
 final class WallViewController: UIViewController {
     private var viewModel: WallViewModelProtocol
-    private var timer: Timer?
+    private var noInternetConnectionTimer: Timer?
+    private var searchBarTimer: Timer?
+    
+    private let searchController = UISearchController(searchResultsController: nil)
     
     var customView: WallView {
         get { return view as! WallView }
@@ -31,13 +34,23 @@ final class WallViewController: UIViewController {
         
         viewModel.delegate = self
         
+        setupSearchController()
         getNextpageOfPhotosListFromServer()
     }
     
-    @objc func getNextpageOfPhotosListFromServer() {
+    private func setupSearchController() {
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "WallViewController.SearchController.Placeholder".localized
+        navigationItem.titleView = searchController.searchBar
+        definesPresentationContext = true
+    }
+    
+    @objc private func getNextpageOfPhotosListFromServer() {
         if Reachability.isConnectedToNetwork() {
             customView.noInternetConnectionLabel.isHidden = true
-            timer?.invalidate()
+            noInternetConnectionTimer?.invalidate()
             viewModel.currentPage += 1
             
             ApiManager().send(GetPhotosRequest(page: viewModel.currentPage), for: [Photo].self) { [weak self] (photos, error) in
@@ -50,8 +63,37 @@ final class WallViewController: UIViewController {
                 }
             }
         } else {
-            timer?.invalidate()
-            timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getNextpageOfPhotosListFromServer), userInfo: nil, repeats: false)
+            noInternetConnectionTimer?.invalidate()
+            noInternetConnectionTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getNextpageOfPhotosListFromServer), userInfo: nil, repeats: false)
+            customView.noInternetConnectionLabel.isHidden = false
+        }
+    }
+    
+    @objc private func getSearchResultPhotosListFromServer() {
+        guard let searchText = viewModel.searchText, searchText != "" else {
+            getNextpageOfPhotosListFromServer()
+            return
+        }
+        
+        if Reachability.isConnectedToNetwork() {
+            customView.noInternetConnectionLabel.isHidden = true
+            noInternetConnectionTimer?.invalidate()
+            viewModel.currentPage += 1
+            
+            ApiManager().send(SearchPhotoRequest(page: viewModel.currentPage, searchTest: searchText), for: SearchPhotosResult.self) { [weak self] (result, error) in
+                guard error == nil else {
+                    print(error.debugDescription)
+                    return }
+                
+                DispatchQueue.main.async {
+                    guard let strongSelf = self, let photos = result?.results else { return }
+                    strongSelf.viewModel.photosList.append(contentsOf: photos)
+                    strongSelf.customView.collectionView.reloadData()
+                }
+            }
+        } else {
+            noInternetConnectionTimer?.invalidate()
+            noInternetConnectionTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(getNextpageOfPhotosListFromServer), userInfo: nil, repeats: false)
             customView.noInternetConnectionLabel.isHidden = false
         }
     }
@@ -61,12 +103,16 @@ extension WallViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.photosList.count
     }
-  
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallCell", for: indexPath) as? WallCollectionViewCell else { return UICollectionViewCell() }
         
         if indexPath.row == (viewModel.photosList.count - 3) {
-            getNextpageOfPhotosListFromServer()
+            if viewModel.searchText != nil {
+                getSearchResultPhotosListFromServer()
+            } else {
+                getNextpageOfPhotosListFromServer()
+            }
         }
         
         if let image = viewModel.image(for: indexPath.item) {
@@ -77,7 +123,7 @@ extension WallViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
         return CGSize(width: itemSize, height: itemSize)
@@ -118,10 +164,28 @@ extension WallViewController: WallViewDelegate {
     
     func reloadCell(indexPath: IndexPath) {
         guard let cell = customView.collectionView.cellForItem(at: indexPath) as? WallCollectionViewCell,
-        customView.collectionView.visibleCells.contains(cell),
-        let image = viewModel.image(for: indexPath.item) else { return }
+            customView.collectionView.visibleCells.contains(cell),
+            let image = viewModel.image(for: indexPath.item) else { return }
         
         cell.activitiIndicatorView.stopAnimating()
         cell.imageView.image = image
+    }
+}
+
+extension WallViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        getNextpageOfPhotosListFromServer()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBarTimer?.invalidate()
+        viewModel.resetPages()
+        viewModel.searchText = searchText
+        
+        if searchText != "" {
+            searchBarTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getSearchResultPhotosListFromServer), userInfo: nil, repeats: false)
+        } else {
+            getNextpageOfPhotosListFromServer()
+        }
     }
 }

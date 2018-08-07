@@ -46,7 +46,7 @@ final class EditorViewController: UIViewController {
         getPhotoFromServer()
     }
     
-    func getPhotoFromServer() {
+    private func getPhotoFromServer() {
         guard let url = URL(string: viewModel.photo.urls.regular) else { return }
         
         customView.activitiIndicatorView.startAnimating()
@@ -89,19 +89,19 @@ final class EditorViewController: UIViewController {
         customView.filterButton.addTarget(self, action: #selector(filterButtonAction), for: .touchUpInside)
     }
     
-    @objc func zoomToDefaultScale() {
+    @objc private func zoomToDefaultScale() {
         let widthScale = customView.scrollView.frame.width / (viewModel.photo.width ?? 0)
         let heightScale = customView.scrollView.frame.height / (viewModel.photo.height ?? 0)
         customView.scrollView.minimumZoomScale = min(widthScale, heightScale)
         customView.scrollView.setZoomScale(min(widthScale, heightScale), animated: false)
     }
     
-    @objc func hideAllModificationViews() {
+    @objc private func hideAllModificationViews() {
         customView.gradientView.isHidden = true
         customView.filterView.isHidden = true
     }
     
-    @objc func moveGradientView(_ sender: UIPanGestureRecognizer) {
+    @objc private func moveGradientView(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.view)
         if let view = sender.view {
             view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
@@ -109,7 +109,7 @@ final class EditorViewController: UIViewController {
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
-    @objc func moveFilterView(_ sender: UIPanGestureRecognizer) {
+    @objc private func moveFilterView(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self.view)
         if let view = sender.view {
             view.center = CGPoint(x:view.center.x + translation.x, y:view.center.y + translation.y)
@@ -117,11 +117,11 @@ final class EditorViewController: UIViewController {
         sender.setTranslation(CGPoint.zero, in: self.view)
     }
     
-    @objc func gradientButtonAction() {
+    @objc private func gradientButtonAction() {
         customView.gradientView.isHidden = !customView.gradientView.isHidden
     }
     
-    @objc func colorPaletteTapAction(_ sender: UITapGestureRecognizer) {
+    @objc private func colorPaletteTapAction(_ sender: UITapGestureRecognizer) {
         let selectedPoint = sender.location(in: customView.gradientView.colorsPaletteImageView)
         let color = customView.gradientView.colorsPaletteImageView.layer.colorOfPoint(point: selectedPoint)
         let scale = customView.scrollView.zoomScale
@@ -131,19 +131,19 @@ final class EditorViewController: UIViewController {
         customView.imageView.layer.addSublayer(viewModel.gradient)
     }
     
-    @objc func gradientClearButtonAction() {
+    @objc private func gradientClearButtonAction() {
         viewModel.gradient.removeFromSuperlayer()
     }
     
-    @objc func filterButtonAction() {
+    @objc private func filterButtonAction() {
         customView.filterView.isHidden = !customView.filterView.isHidden
     }
     
-    @objc func filterClearButtonAction() {
+    @objc private func filterClearButtonAction() {
         customView.imageView.image = viewModel.image
     }
     
-    @objc func shareButtonAction() {
+    @objc private func shareButtonAction() {
         UIGraphicsBeginImageContext(customView.imageView.bounds.size)
         guard let currentContext = UIGraphicsGetCurrentContext() else { return }
         customView.imageView.layer.render(in: currentContext)
