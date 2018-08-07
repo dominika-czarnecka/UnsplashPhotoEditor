@@ -6,7 +6,7 @@ class StackViewButton: UIButton {
         super.init(frame: frame)
         
         backgroundColor = .gray
-        layer.cornerRadius = 2
+        layer.cornerRadius = 5
         translatesAutoresizingMaskIntoConstraints = false
         
         addConstraints([
@@ -16,10 +16,8 @@ class StackViewButton: UIButton {
         titleLabel?.translatesAutoresizingMaskIntoConstraints = false
         
         addConstraints([
-            titleLabel!.leftAnchor.constraint(equalTo: leftAnchor, constant: .minimumMargin),
-            titleLabel!.topAnchor.constraint(equalTo: topAnchor, constant: .minimumMargin),
-            titleLabel!.rightAnchor.constraint(equalTo: rightAnchor, constant: -.minimumMargin),
-            titleLabel!.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -.minimumMargin)
+            titleLabel!.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel!.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     

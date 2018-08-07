@@ -27,7 +27,8 @@ final class EditorView: BaseView {
     
     let stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .fillEqually
+        stackView.spacing = .margin
         stackView.alignment = .center
         return stackView
     }()
