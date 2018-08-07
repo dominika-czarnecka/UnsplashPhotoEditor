@@ -27,6 +27,8 @@ class WallCollectionViewLayout: UICollectionViewLayout {
     override func prepare() {
         guard let collectionView = collectionView, let delegate = delegate else { return }
 
+        cache.removeAll()
+        
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset = [CGFloat]()
         for column in 0 ..< numberOfColumns {
@@ -34,7 +36,7 @@ class WallCollectionViewLayout: UICollectionViewLayout {
         }
         var column = 0
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
-        
+
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
@@ -56,7 +58,7 @@ class WallCollectionViewLayout: UICollectionViewLayout {
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
-
+        
         for attributes in cache {
             if attributes.frame.intersects(rect) {
                 visibleLayoutAttributes.append(attributes)

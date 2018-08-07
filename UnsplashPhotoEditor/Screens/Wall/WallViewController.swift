@@ -43,8 +43,11 @@ final class WallViewController: UIViewController {
                 print(error!)
                 return
             }
-            self?.viewModel.photosList.append(contentsOf: photos ?? [])
+ 
             DispatchQueue.main.async {
+                guard let strongSelf = self, let photos = photos else { return }
+                
+                strongSelf.viewModel.photosList.append(contentsOf: photos)
                 self?.customView.collectionView.reloadData()
             }
         }
@@ -60,7 +63,6 @@ extension WallViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WallCell", for: indexPath) as? WallCollectionViewCell else { return UICollectionViewCell() }
         
         if indexPath.row == (viewModel.photosList.count - 5) {
-            print("Index path", indexPath)
             getNextpageOfPhotosListFromServer()
         }
         
@@ -116,7 +118,7 @@ extension WallViewController: WallViewDelegate {
         guard let cell = customView.collectionView.cellForItem(at: indexPath) as? WallCollectionViewCell,
         customView.collectionView.visibleCells.contains(cell),
         let image = viewModel.image(for: indexPath.item) else { return }
-    
+        
         cell.activitiIndicatorView.stopAnimating()
         cell.imageView.image = image
     }

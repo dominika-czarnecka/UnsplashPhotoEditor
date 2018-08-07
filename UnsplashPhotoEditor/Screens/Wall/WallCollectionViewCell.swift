@@ -3,13 +3,16 @@ import UIKit
 class WallCollectionViewCell: UICollectionViewCell {
     let imageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 15
+
         return imageView
     }()
     
     let activitiIndicatorView: UIActivityIndicatorView = {
        let activitiIndicator = UIActivityIndicatorView()
-        activitiIndicator.color = .background
+        activitiIndicator.color = .black
         return activitiIndicator
     }()
     
